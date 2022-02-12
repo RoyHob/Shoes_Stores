@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
+  @override
+  State<ProductDetails> createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,11 +71,28 @@ class ProductDetails extends StatelessWidget {
               height: 500,
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                    )),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text("Nike Blazer Mid '77 "),
+                        ],
+                      ),
+                      Row(
+                        children: [Text("79.0"), Text("99.0")],
+                      ),
+                      // Row()
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
