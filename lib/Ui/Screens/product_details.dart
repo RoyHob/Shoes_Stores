@@ -1,3 +1,5 @@
+import 'package:flutlab/Constants/style.dart';
+import 'package:flutlab/Constants/text.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -83,17 +85,99 @@ class _ProductDetailsState extends State<ProductDetails> {
                     children: [
                       Row(
                         children: [
-                          Text("Nike Blazer Mid '77 "),
+                          Text("Nike Blazer Mid '77 ", style: titleTextStyle),
                         ],
                       ),
-                      Row(
-                        children: [Text("79.0"), Text("99.0")],
+                      SizedBox(
+                        height: 5,
                       ),
-                      // Row()
+                      Row(
+                        children: [
+                          Text(
+                            "79.0",
+                            style: titleTextStyle,
+                          ),
+                          Text(
+                            "99.0",
+                            style: normalTextSyle,
+                          ),
+                          //TODO linetrough
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ShoesSizes(),
+                          ShoesSizes(),
+                          ShoesSizes(),
+                          ShoesSizes(),
+                          ShoesSizes(),
+                          ShoesSizes(),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        aboutNikeShoes,
+                        style: normalTextSyle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Read more",
+                            style: readMore,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Reviews:",
+                            style: reviewsTextStyle,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            left: 20,
+            right: 20,
+            bottom: 20,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      shape: BoxShape.rectangle,
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.redAccent, Colors.orange]),
+                    ),
+                    child: Center(
+                      child: TextButton(
+                          onPressed: () {},
+                          child:
+                              Text("Add to cart", style: containerTextStyle)),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -103,3 +187,16 @@ class _ProductDetailsState extends State<ProductDetails> {
 }
 
 floatAction() {}
+
+class ShoesSizes extends StatelessWidget {
+  const ShoesSizes({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: 30,
+      backgroundColor: Colors.grey.withOpacity(0.1),
+      child: Text("25"),
+    );
+  }
+}
