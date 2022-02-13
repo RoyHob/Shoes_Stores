@@ -12,15 +12,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Shoes Store',
       theme: ThemeData(),
-       home: ProductDetails(),
+      //  home: ProductDetails(),
       //  home:HomePage(),
-      // initialRoute: productDetails,
-      // onGenerateRoute: (settings) {
-      //   if (settings.name == productDetails) {
-      //     return MaterialPageRoute(builder: (context) => ProductDetails());
-      //   }
-      //   return MaterialPageRoute(builder: (context) => HomePage());
-      // }
+      initialRoute: homePage,
+      onGenerateRoute: (settings) {
+        if (settings.name == productDetails) {
+          return MaterialPageRoute(builder: (context) => ProductDetails());
+        }
+        return MaterialPageRoute(builder: (context) => HomePage());
+      }
     );
   }
 }

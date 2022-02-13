@@ -1,40 +1,38 @@
+import 'package:flutlab/Constants/color.dart';
 import 'package:flutlab/Constants/style.dart';
 import 'package:flutlab/Constants/text.dart';
+import 'package:flutlab/Ui/widgets/product_details_widgets.dart/perspective_product_container.dart';
+import 'package:flutlab/Ui/widgets/product_details_widgets.dart/size_product_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:readmore/readmore.dart';
 
 class ProductDetails extends StatefulWidget {
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
 }
 
-var product_size = [
-  // "34", "35", "36", "37", "38", "39", "40",
+bool favoritePressed = true;
 
-  {
-    "size" :"34"
-  },
-   {
-    "size" :"34"
-  },
-   {
-    "size" :"34"
-  },
-   {
-    "size" :"34"
-  },
-   {
-    "size" :"34"
-  },
-   {
-    "size" :"34"
-  }
+const List<int> product_list = [
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
 ];
 
 class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.withOpacity(0.1),
+      backgroundColor: greyColor.withOpacity(0.1),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
       floatingActionButton: Stack(
         fit: StackFit.expand,
@@ -47,15 +45,18 @@ class _ProductDetailsState extends State<ProductDetails> {
               width: 40,
               child: FittedBox(
                 child: FloatingActionButton(
-                  backgroundColor: Colors.white,
-                  onPressed: floatAction(),
+                  heroTag: "back",
+                  backgroundColor: whiteColor,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(90),
                   ),
                   child: Icon(
                     Icons.chevron_left_sharp,
                     size: 40,
-                    color: Colors.black,
+                    color: blackColor,
                   ),
                 ),
               ),
@@ -69,16 +70,27 @@ class _ProductDetailsState extends State<ProductDetails> {
               width: 40,
               child: FittedBox(
                 child: FloatingActionButton(
-                  backgroundColor: Colors.white,
-                  onPressed: floatAction(),
+                  heroTag: "favorite",
+                  backgroundColor: whiteColor,
+                  onPressed: () {
+                    setState(() {
+                      favoritePressed = !favoritePressed;
+                    });
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(90),
                   ),
-                  child: Icon(
-                    Icons.favorite_border_outlined,
-                    size: 30,
-                    color: Colors.black,
-                  ),
+                  child: favoritePressed
+                      ? Icon(
+                          Icons.favorite_border_outlined,
+                          size: 30,
+                          color: blackColor,
+                        )
+                      : Icon(
+                          Icons.favorite,
+                          size: 30,
+                          color: orangeColor,
+                        ),
                 ),
               ),
             ),
@@ -89,6 +101,25 @@ class _ProductDetailsState extends State<ProductDetails> {
         fit: StackFit.expand,
         children: [
           Positioned(
+            left: 0,
+            right: 0,
+            top: 70,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    //TODO: put the images and the seletor ;
+                    itemCount: product_list.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, int index) =>
+                        PerspectiveProductContainer(value: product_list[index]),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
             bottom: 0,
             left: 0,
             right: 0,
@@ -96,7 +127,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: 500,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: whiteColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
@@ -133,42 +164,24 @@ class _ProductDetailsState extends State<ProductDetails> {
                       SizedBox(
                         height: 50,
                         child: ListView.builder(
-                          itemCount: product_size.length,
+                          itemCount: product_list.length,
                           scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => Padding(
-                            padding: const EdgeInsets.all(2.5),
-                            child: GestureDetector(
-                              //TODO make sure if its right
-                              onTap: () {},
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle, color: Colors.grey),
-                                child: Center(
-                                  child: Text("$product_size[$index][size]"),
-                                ),
-                              ),
-                            ),
-                          ),
+                          itemBuilder: (context, int index) =>
+                              SizeProductContainer(value: product_list[index]),
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      ReadMoreText(
                         aboutNikeShoes,
                         style: normalTextSyle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "Read more",
-                            style: readMore,
-                          ),
-                        ],
+                        trimMode: TrimMode.Line,
+                        trimLines: 2,
+                        trimExpandedText: "Read less",
+                        trimCollapsedText: "Read more",
+                        lessStyle: readMore,
+                        moreStyle: readMore,
                       ),
                       SizedBox(
                         height: 25,
@@ -181,6 +194,24 @@ class _ProductDetailsState extends State<ProductDetails> {
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          Spacer(),
+                          RatingBar.builder(
+                            glowColor: orangeColor,
+                            itemSize: 30,
+                            initialRating: 3,
+                            minRating: 2,
+                            itemBuilder: (context, _) =>
+                                Icon(Icons.star, color: orangeColor),
+                            onRatingUpdate: (rating) {},
+                          ),
+                          Icon(Icons.arrow_drop_down)
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -191,47 +222,30 @@ class _ProductDetailsState extends State<ProductDetails> {
             left: 20,
             right: 20,
             bottom: 20,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 70,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      shape: BoxShape.rectangle,
-                      gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [Colors.redAccent, Colors.orange]),
-                    ),
-                    child: Center(
-                      child: TextButton(
-                          onPressed: () {},
-                          child:
-                              Text("Add to cart", style: containerTextStyle)),
+            child: GestureDetector(
+              onTap: () {
+                print("added to cart");
+              },
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 70,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          shape: BoxShape.rectangle,
+                          gradient: primarygradient),
+                      child: Center(
+                        child: Text("Add to cart", style: containerTextStyle),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-floatAction() {}
-
-class ShoesSizes extends StatelessWidget {
-  const ShoesSizes({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 30,
-      backgroundColor: Colors.grey.withOpacity(0.1),
-      child: Text("25"),
     );
   }
 }

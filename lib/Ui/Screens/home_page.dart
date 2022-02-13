@@ -1,4 +1,7 @@
+import 'package:flutlab/Constants/color.dart';
 import 'package:flutlab/Constants/style.dart';
+import 'package:flutlab/Ui/app.dart';
+import 'package:flutlab/Ui/widgets/home_page_widgets/shoes_container.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -6,11 +9,26 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+const List<String> shoes_list = [
+  "!",
+  "@",
+  "&",
+  "%",
+  "*",
+  "^",
+  "!",
+  "@",
+  "&",
+  "%",
+  "*",
+  "^",
+];
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.withOpacity(0.1),
+      backgroundColor: greyColor.withOpacity(0.1),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         decoration: BoxDecoration(
@@ -19,6 +37,7 @@ class _HomePageState extends State<HomePage> {
               colors: [Colors.green, Colors.green, Colors.green]),
         ),
         child: FloatingActionButton(
+          heroTag: "shop",
           onPressed: () {},
           child: Container(
               //TODO make sure for the gradient;
@@ -43,35 +62,35 @@ class _HomePageState extends State<HomePage> {
               label: "",
               icon: Icon(
                 Icons.home_outlined,
-                color: Colors.black,
+                color: blackColor,
               ),
             ),
             BottomNavigationBarItem(
               label: "",
               icon: Icon(
                 Icons.search_outlined,
-                color: Colors.black,
+                color: blackColor,
               ),
             ),
             BottomNavigationBarItem(
               label: "",
               icon: Icon(
                 Icons.favorite_outline,
-                color: Colors.black,
+                color: blackColor,
               ),
             ),
             BottomNavigationBarItem(
               label: "",
               icon: Icon(
                 Icons.person_outlined,
-                color: Colors.black,
+                color: blackColor,
               ),
             ),
           ],
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 20),
+        padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 40),
         child: Column(
           children: [
             Row(
@@ -80,10 +99,9 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     height: 120,
                     decoration: BoxDecoration(
-                      // TODO image: ,
+                      // TODO: image: ,
                       borderRadius: BorderRadius.circular(15),
-                      gradient:
-                          LinearGradient(colors: [Colors.red, Colors.orange]),
+                      gradient: primarygradient,
                       color: Colors.orange,
                     ),
                     child: Column(
@@ -109,23 +127,10 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 100,
               child: ListView.builder(
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(2.5),
-                  child: GestureDetector(
-                    //TODO make sure if its right
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.grey),
-                      child: Center(child: Text("$index")),
-                    ),
-                  ),
-                ),
-              ),
+                  itemCount: shoes_list.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      ShoesContainer(value: shoes_list[index])),
             ),
             SizedBox(
               height: 20,
@@ -142,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                   height: 20,
                   width: 20,
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: greyColor.withOpacity(0.2),
                       shape: BoxShape.circle),
                   child: Icon(
                     Icons.wifi,
@@ -151,6 +156,67 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              child: Expanded(
+                child: GridView(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                  ),
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(productDetails);
+                      },
+                      child: ShoesInGridView(
+                        color: orangeColor,
+                        child: Container(
+                          child: Center(
+                            child: Text("image"),
+                          ),
+                        ),
+                      ),
+                    ),
+                    ShoesInGridView(
+                      color: greyColor,
+                      child: Column(
+                        
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Row(
+                            children: [Text("Nike Blazer Mid '77")],
+                          ),
+                          Row(
+                            children: [
+                              Text("79.0"),
+                              Spacer(),
+                              //TODO: element switcher ;
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    ShoesInGridView(
+                      color: blackColor,
+                    ),
+                    ShoesInGridView(
+                      color: orangeColor,
+                    ),
+                  ],
+                ),
+              ),
+            )
+            // GridView.count(
+            //   crossAxisCount: 2,
+            //   children: [
+            //     Container(child: Text("ghd"),)
+            //   ],
+            // ),
           ],
         ),
       ),
@@ -158,16 +224,19 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Categories extends StatelessWidget {
-  const Categories({
-    Key? key,
-  }) : super(key: key);
+class ShoesInGridView extends StatelessWidget {
+  final color;
+  final child;
+  const ShoesInGridView({Key? key, this.color, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 60,
-      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+      child: child,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(30.0),
+      ),
     );
   }
 }
