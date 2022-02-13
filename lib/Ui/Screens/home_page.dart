@@ -10,18 +10,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.withOpacity(0.2),
+      backgroundColor: Colors.grey.withOpacity(0.1),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
-        
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          gradient: LinearGradient(colors: [Colors.red, Colors.orange]),
+          gradient: LinearGradient(
+              colors: [Colors.green, Colors.green, Colors.green]),
         ),
         child: FloatingActionButton(
-          backgroundColor: Colors.orange,
           onPressed: () {},
-          child: Icon(Icons.backpack),
+          child: Container(
+              //TODO make sure for the gradient;
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.green, Colors.green, Colors.green])),
+              child: Icon(Icons.backpack)),
         ),
       ),
       bottomNavigationBar: ClipRRect(

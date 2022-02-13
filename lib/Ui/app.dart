@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Shoes Store',
       theme: ThemeData(),
-      //  home: ProductDetails(),
-       home:HomePage(),
+       home: ProductDetails(),
+      //  home:HomePage(),
       // initialRoute: productDetails,
       // onGenerateRoute: (settings) {
       //   if (settings.name == productDetails) {

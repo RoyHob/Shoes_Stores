@@ -7,6 +7,29 @@ class ProductDetails extends StatefulWidget {
   State<ProductDetails> createState() => _ProductDetailsState();
 }
 
+var product_size = [
+  // "34", "35", "36", "37", "38", "39", "40",
+
+  {
+    "size" :"34"
+  },
+   {
+    "size" :"34"
+  },
+   {
+    "size" :"34"
+  },
+   {
+    "size" :"34"
+  },
+   {
+    "size" :"34"
+  },
+   {
+    "size" :"34"
+  }
+];
+
 class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
@@ -107,16 +130,28 @@ class _ProductDetailsState extends State<ProductDetails> {
                       SizedBox(
                         height: 30,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ShoesSizes(),
-                          ShoesSizes(),
-                          ShoesSizes(),
-                          ShoesSizes(),
-                          ShoesSizes(),
-                          ShoesSizes(),
-                        ],
+                      SizedBox(
+                        height: 50,
+                        child: ListView.builder(
+                          itemCount: product_size.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) => Padding(
+                            padding: const EdgeInsets.all(2.5),
+                            child: GestureDetector(
+                              //TODO make sure if its right
+                              onTap: () {},
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle, color: Colors.grey),
+                                child: Center(
+                                  child: Text("$product_size[$index][size]"),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 20,
