@@ -137,11 +137,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Expanded(
-              child: SizedBox(
-                height: 100,
-                child: ListView.builder(itemCount: shoesList.length, scrollDirection: Axis.horizontal, itemBuilder: (context, index) => ShoesContainer(value: shoesList[index])),
-              ),
+            SizedBox(
+              height: 100,
+              child: ListView.builder(itemCount: shoesList.length, scrollDirection: Axis.horizontal, itemBuilder: (context, index) => ShoesContainer(value: shoesList[index])),
             ),
             SizedBox(
               height: 20,
