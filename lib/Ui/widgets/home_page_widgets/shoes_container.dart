@@ -22,6 +22,9 @@ class _ShoesContainerState extends State<ShoesContainer> {
             });
           },
           child: Container(
+            child: CircleAvatar(
+              backgroundImage: ExactAssetImage('${widget.value}'),
+            ),
             height: 50,
             width: 50,
             decoration: BoxDecoration(
@@ -34,11 +37,6 @@ class _ShoesContainerState extends State<ShoesContainer> {
                           ),
                     width: isTapped ? 3 : 1),
                 color: Colors.white),
-            child: Center(
-              child: Image.asset(
-                '${widget.value}',
-              ),
-            ),
           ),
         ));
   }
