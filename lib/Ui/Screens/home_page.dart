@@ -9,6 +9,13 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+List<Image> shoesList = [
+  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
+  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
+  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
+  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
+  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
+];
 const List<String> shoes_list = [
   "!",
   "@",
@@ -33,8 +40,11 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          gradient: LinearGradient(
-              colors: [Colors.green, Colors.green, Colors.green]),
+          gradient: LinearGradient(colors: [
+            Colors.green,
+            Colors.green,
+            Colors.green
+          ]),
         ),
         child: FloatingActionButton(
           heroTag: "shop",
@@ -42,8 +52,11 @@ class _HomePageState extends State<HomePage> {
           child: Container(
               //TODO make sure for the gradient;
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.green, Colors.green, Colors.green])),
+                  gradient: LinearGradient(colors: [
+                Colors.green,
+                Colors.green,
+                Colors.green
+              ])),
               child: Icon(Icons.backpack)),
         ),
       ),
@@ -126,11 +139,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(
               height: 100,
-              child: ListView.builder(
-                  itemCount: shoes_list.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) =>
-                      ShoesContainer(value: shoes_list[index])),
+              child: ListView.builder(itemCount: shoesList.length, scrollDirection: Axis.horizontal, itemBuilder: (context, index) => ShoesContainer(value: shoesList[index])),
             ),
             SizedBox(
               height: 20,
@@ -146,9 +155,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: 20,
                   width: 20,
-                  decoration: BoxDecoration(
-                      color: greyColor.withOpacity(0.2),
-                      shape: BoxShape.circle),
+                  decoration: BoxDecoration(color: greyColor.withOpacity(0.2), shape: BoxShape.circle),
                   child: Icon(
                     Icons.wifi,
                     size: 20,
@@ -184,12 +191,13 @@ class _HomePageState extends State<HomePage> {
                     ShoesInGridView(
                       color: greyColor,
                       child: Column(
-                        
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Row(
-                            children: [Text("Nike Blazer Mid '77")],
+                            children: [
+                              Text("Nike Blazer Mid '77")
+                            ],
                           ),
                           Row(
                             children: [
