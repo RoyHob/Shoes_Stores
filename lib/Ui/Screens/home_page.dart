@@ -1,4 +1,5 @@
 import 'package:flutlab/Constants/color.dart';
+import 'package:flutlab/Constants/data.dart';
 import 'package:flutlab/Constants/style.dart';
 import 'package:flutlab/Ui/app.dart';
 import 'package:flutlab/Ui/widgets/home_page_widgets/shoes_container.dart';
@@ -9,18 +10,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-const List<String> shoes_list = [
-  "lib/assets/nike_shoes_list/nike_1.jpg",
-  "lib/assets/nike_shoes_list/nike_2.jpg",
-  "lib/assets/nike_shoes_list/nike_3.jpg",
-  "lib/assets/nike_shoes_list/nike_4.jpg",
-  "lib/assets/nike_shoes_list/nike_5.jpg",
-  "lib/assets/nike_shoes_list/nike_6.jpg",
-  "lib/assets/nike_shoes_list/nike_7.jpg",
-  "lib/assets/nike_shoes_list/nike_8.jpg",
-  "lib/assets/nike_shoes_list/nike_9.jpg",
-  "lib/assets/nike_shoes_list/nike_10.jpg",
-];
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -65,6 +54,7 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 40),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
               children: [
@@ -97,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "Summer 2021",
                           style:  containerPrimaryText ,
-
+      
                         )
                       ],
                     ),

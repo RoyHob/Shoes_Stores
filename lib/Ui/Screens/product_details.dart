@@ -8,35 +8,15 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetails extends StatefulWidget {
-
-  const ProductDetails({Key? key,}) : super(key: key);
+  const ProductDetails({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
 }
 
 bool favoritePressed = true;
-
-const productPerspectives = [
-  "lib/assets/product_blazer/blazer_1.jpg",
-  "lib/assets/product_blazer/blazer_2.jpg",
-  "lib/assets/product_blazer/blazer_3.jpg",
-  "lib/assets/product_blazer/blazer_4.jpg",
-  "lib/assets/product_blazer/blazer_5.jpg",
-];
-const List<int> productListSize = [
-  34,
-  35,
-  36,
-  37,
-  38,
-  39,
-  40,
-  41,
-  42,
-  43,
-  44,
-];
 
 class _ProductDetailsState extends State<ProductDetails> {
   @override
@@ -250,7 +230,8 @@ class _ProductDetailsState extends State<ProductDetails> {
             bottom: 20,
             child: GestureDetector(
               onTap: () {
-                print("added to cart");
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Item added to cart"),duration: Duration(milliseconds: 500),),);
               },
               child: Row(
                 children: [

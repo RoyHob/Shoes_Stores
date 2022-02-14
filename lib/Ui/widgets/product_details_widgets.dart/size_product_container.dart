@@ -1,4 +1,4 @@
-
+import 'package:flutlab/Constants/color.dart';
 import 'package:flutter/material.dart';
 
 class SizeProductContainer extends StatefulWidget {
@@ -21,6 +21,13 @@ class _SizeProductContainerState extends State<SizeProductContainer> {
         onTap: () {
           setState(() {
             isTapped = !isTapped;
+             isTapped ?ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(" Size ${widget.value} selected "),
+                duration: Duration(milliseconds: 500),
+              ),
+            // ignore: unnecessary_statements
+            ):null;
           });
         },
         child: Container(
@@ -30,17 +37,17 @@ class _SizeProductContainerState extends State<SizeProductContainer> {
               shape: BoxShape.circle,
               border: Border.all(
                   color: isTapped
-                      ? Colors.orange
-                      : Colors.grey.withOpacity(
+                      ? orangeColor
+                      : greyColor.withOpacity(
                           0.3,
                         ),
                   width: 2),
-              color: Colors.white),
+              color: whiteColor),
           child: Center(
             child: Text(
               "${widget.value}",
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  TextStyle(color: blackColor, fontWeight: FontWeight.bold),
             ),
           ),
         ),
