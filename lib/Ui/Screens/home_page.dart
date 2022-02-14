@@ -10,11 +10,11 @@ class HomePage extends StatefulWidget {
 }
 
 List<String> shoesList = [
-  "prduct_blazeryr/blazer_1.jpg",
-  "prduct_blazeryr/blazer_1.jpg",
-  "prduct_blazeryr/blazer_1.jpg",
-  "prduct_blazeryr/blazer_1.jpg",
-  "prduct_blazeryr/blazer_1.jpg",
+  "blazer_1.jpg",
+  "blazer_2.jpg",
+  "blazer_3.jpg",
+  "blazer_4.jpg",
+  "blazer_5.jpg",
 ];
 const List<String> shoes_list = [
   "!",
