@@ -9,12 +9,12 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-List<Image> shoesList = [
-  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
-  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
-  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
-  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
-  Image.asset("assets/prduct_blazeryr/blazer_1.jpg"),
+List<String> shoesList = [
+  "assets/prduct_blazeryr/blazer_1.jpg",
+  "assets/prduct_blazeryr/blazer_1.jpg",
+  "assets/prduct_blazeryr/blazer_1.jpg",
+  "assets/prduct_blazeryr/blazer_1.jpg",
+  "assets/prduct_blazeryr/blazer_1.jpg",
 ];
 const List<String> shoes_list = [
   "!",
