@@ -37,9 +37,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - assets/product_blazer
-  #  - images/a_dot_ham.jpeg
+  assets:
+   - lib/assets/product_blazer/
+   - lib/assets/nike_shoes_list/
+   - lib/assets/nike_logo/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

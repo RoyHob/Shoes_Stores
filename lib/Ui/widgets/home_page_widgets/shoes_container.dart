@@ -1,4 +1,5 @@
 
+import 'package:flutlab/Constants/color.dart';
 import 'package:flutter/material.dart';
 
 class ShoesContainer extends StatefulWidget {
@@ -24,27 +25,24 @@ class _ShoesContainerState extends State<ShoesContainer> {
           });
         },
         child: Container(
-          height: 50,
-          width: 50,
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
                   color: isTapped
-                      ? Colors.orange
-                      : Colors.grey.withOpacity(
+                      ? orangeColor
+                      : greyColor.withOpacity(
                           0.3,
                         ),
                   width:isTapped?3: 1),
-              color: Colors.white),
+              color: whiteColor),
           child: Center(
-            child: Text(
-              "${widget.value}",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
+            child: CircleAvatar(
+              radius: 30,
+              backgroundImage:  ExactAssetImage('${widget.value}'),
           ),
         ),
       ),
+    ),
     );
   }
 }

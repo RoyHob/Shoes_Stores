@@ -1,6 +1,6 @@
 import 'package:flutlab/Constants/color.dart';
 import 'package:flutlab/Constants/style.dart';
-import 'package:flutlab/Constants/text.dart';
+import 'package:flutlab/Constants/data.dart';
 import 'package:flutlab/Ui/widgets/product_details_widgets.dart/perspective_product_container.dart';
 import 'package:flutlab/Ui/widgets/product_details_widgets.dart/size_product_container.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +8,23 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetails extends StatefulWidget {
+
+  const ProductDetails({Key? key,}) : super(key: key);
+
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
 }
 
 bool favoritePressed = true;
 
-const List<int> product_list = [
+const productPerspectives = [
+  "lib/assets/product_blazer/blazer_1.jpg",
+  "lib/assets/product_blazer/blazer_2.jpg",
+  "lib/assets/product_blazer/blazer_3.jpg",
+  "lib/assets/product_blazer/blazer_4.jpg",
+  "lib/assets/product_blazer/blazer_5.jpg",
+];
+const List<int> productListSize = [
   34,
   35,
   36,
@@ -108,12 +118,17 @@ class _ProductDetailsState extends State<ProductDetails> {
               children: [
                 SizedBox(
                   height: 200,
-                  child: ListView.builder(
-                    //TODO: put the images and the seletor ;
-                    itemCount: product_list.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, int index) =>
-                        PerspectiveProductContainer(value: product_list[index]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: ListView.builder(
+                      //TODO! put the images and the seletor ;
+                      itemCount: productPerspectives.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, int index) =>
+                          //TODO! select only one item
+                          PerspectiveProductContainer(
+                              value: productPerspectives[index]),
+                    ),
                   ),
                 ),
               ],
@@ -139,7 +154,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                     children: [
                       Row(
                         children: [
-                          Text("Nike Blazer Mid '77 ", style: titleTextStyle),
+                          Text("Nike Blazer Mid '77 ",
+                              style:
+                                  titleText), //TODO! insert the switch of perspective
                         ],
                       ),
                       SizedBox(
@@ -147,15 +164,21 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                       Row(
                         children: [
-                          Text(
-                            "79.0",
-                            style: titleTextStyle,
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(text: "\$", style: superScriptText),
+                                TextSpan(
+                                  text: "79,0",
+                                  style: titleText,
+                                ),
+                                TextSpan(
+                                  text: "\$99.0",
+                                  style: normalTextStyleLineTrough,
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            "99.0",
-                            style: normalTextSyle,
-                          ),
-                          //TODO linetrough
                         ],
                       ),
                       SizedBox(
@@ -164,18 +187,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                       SizedBox(
                         height: 50,
                         child: ListView.builder(
-                          itemCount: product_list.length,
+                          itemCount: productListSize.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, int index) =>
-                              SizeProductContainer(value: product_list[index]),
+                              SizeProductContainer(
+                                  value: productListSize[index]),
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       ReadMoreText(
+                        //TODO! put it below the text
                         aboutNikeShoes,
-                        style: normalTextSyle,
+                        style: normalText,
                         trimMode: TrimMode.Line,
                         trimLines: 2,
                         trimExpandedText: "Read less",
@@ -190,7 +215,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         children: [
                           Text(
                             "Reviews:",
-                            style: reviewsTextStyle,
+                            style: reviewsText,
                           ),
                         ],
                       ),
@@ -199,6 +224,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                       Row(
                         children: [
+                          //TODO! insert the circle avatar ;
                           Spacer(),
                           RatingBar.builder(
                             glowColor: orangeColor,
@@ -236,7 +262,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           shape: BoxShape.rectangle,
                           gradient: primarygradient),
                       child: Center(
-                        child: Text("Add to cart", style: containerTextStyle),
+                        child: Text("Add to cart", style: containerPrimaryText),
                       ),
                     ),
                   ),

@@ -10,18 +10,16 @@ class HomePage extends StatefulWidget {
 }
 
 const List<String> shoes_list = [
-  "!",
-  "@",
-  "&",
-  "%",
-  "*",
-  "^",
-  "!",
-  "@",
-  "&",
-  "%",
-  "*",
-  "^",
+  "lib/assets/nike_shoes_list/nike_1.jpg",
+  "lib/assets/nike_shoes_list/nike_2.jpg",
+  "lib/assets/nike_shoes_list/nike_3.jpg",
+  "lib/assets/nike_shoes_list/nike_4.jpg",
+  "lib/assets/nike_shoes_list/nike_5.jpg",
+  "lib/assets/nike_shoes_list/nike_6.jpg",
+  "lib/assets/nike_shoes_list/nike_7.jpg",
+  "lib/assets/nike_shoes_list/nike_8.jpg",
+  "lib/assets/nike_shoes_list/nike_9.jpg",
+  "lib/assets/nike_shoes_list/nike_10.jpg",
 ];
 
 class _HomePageState extends State<HomePage> {
@@ -30,63 +28,38 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: greyColor.withOpacity(0.1),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(
-              colors: [Colors.green, Colors.green, Colors.green]),
-        ),
-        child: FloatingActionButton(
-          heroTag: "shop",
-          onPressed: () {},
-          child: Container(
-              //TODO make sure for the gradient;
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.green, Colors.green, Colors.green])),
-              child: Icon(Icons.backpack)),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: orangeColor, //TODO! put a gradient
+        heroTag: "shop",
+        onPressed: () {},
+        child: Icon(
+          Icons.shopping_bag_outlined,
+          color: whiteColor,
         ),
       ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(25),
-          topLeft: Radius.circular(25),
+          topRight: Radius.circular(35),
+          topLeft: Radius.circular(35),
         ),
-        child: BottomNavigationBar(
+        child: BottomAppBar(
           elevation: 10,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          //?Remove label
-          items: [
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(
-                Icons.home_outlined,
-                color: blackColor,
-              ),
+          notchMargin: 17,
+          shape: CircularNotchedRectangle(),
+          child: Container(
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(Icons.home_outlined),
+                Icon(Icons.search),
+                Icon(Icons.favorite_border),
+                Icon(
+                  Icons.person_outlined,
+                ),
+              ],
             ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(
-                Icons.search_outlined,
-                color: blackColor,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(
-                Icons.favorite_outline,
-                color: blackColor,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(
-                Icons.person_outlined,
-                color: blackColor,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
       body: Padding(
@@ -99,21 +72,32 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     height: 120,
                     decoration: BoxDecoration(
-                      // TODO: image: ,
+                      //TODO!Add a nike image inside the container
+                      // image: DecorationImage(image: ExactAssetImage('lib/assets/nike_logo/nike_logo.jpg'), fit: BoxFit.fill,),
+                      boxShadow: [
+                        BoxShadow(
+                          color: greyColor.withOpacity(0.1),
+                          spreadRadius: 4,
+                          blurRadius: 10,
+                          offset: Offset(0, 7), //
+                        )
+                      ],
                       borderRadius: BorderRadius.circular(15),
                       gradient: primarygradient,
-                      color: Colors.orange,
+                      color: orangeColor,
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "New Arrivals",
-                          style: containerTextStyle,
+                          style: containerSecondaryTextStyle,
                         ),
+                        SizedBox(height: 5,),
                         Text(
                           "Summer 2021",
-                          style: containerTextStyle,
+                          style:  containerPrimaryText ,
+
                         )
                       ],
                     ),
@@ -137,9 +121,9 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children: [
-                Text("Nike Blazer", style: homePagetitleTextStyle),
+                Text("Nike Blazer", style: homePagetitleText),
                 Spacer(),
-                Text("43 items", style: homePageAddtotitleTexStyle),
+                Text("43 items", style: homePageAddtotitleText),
                 SizedBox(
                   width: 10,
                 ),
@@ -147,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                   height: 20,
                   width: 20,
                   decoration: BoxDecoration(
-                      color: greyColor.withOpacity(0.2),
+                      color: greyColor.withOpacity(0.4),
                       shape: BoxShape.circle),
                   child: Icon(
                     Icons.wifi,
@@ -181,10 +165,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
+                    //TODO! grid view with different sizes 
                     ShoesInGridView(
                       color: greyColor,
                       child: Column(
-                        
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -195,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("79.0"),
                               Spacer(),
-                              //TODO: element switcher ;
+                              //TODO! element switcher the two circle ;
                             ],
                           ),
                         ],
@@ -211,12 +195,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             )
-            // GridView.count(
-            //   crossAxisCount: 2,
-            //   children: [
-            //     Container(child: Text("ghd"),)
-            //   ],
-            // ),
+            
           ],
         ),
       ),
