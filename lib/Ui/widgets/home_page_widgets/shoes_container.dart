@@ -36,7 +36,7 @@ class _ShoesContainerState extends State<ShoesContainer> {
                 color: Colors.white),
             child: Center(
               child: Image.asset(
-                'widget.value',
+                '{widget.value}',
               ),
             ),
           ),
