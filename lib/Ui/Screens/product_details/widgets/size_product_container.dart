@@ -19,7 +19,7 @@ class _SizeProductContainerState extends State<SizeProductContainer> {
       padding: const EdgeInsets.all(2.5),
       child: GestureDetector(
         onTap: () {
-          setState(() {
+          setState(() { //index 
             isTapped = !isTapped;
              isTapped ?ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

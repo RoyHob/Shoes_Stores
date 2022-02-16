@@ -9,3 +9,7 @@ final whiteColor = Colors.white;
 final greyColor = Colors.grey;
 final blackColor = Colors.black;
 final orangeColor = Colors.orange;
+final yellowColor = Colors.yellow;
+final greenColor = Colors.green;
+
+

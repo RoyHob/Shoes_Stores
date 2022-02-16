@@ -1,39 +1,42 @@
 import 'dart:ui';
 import 'package:flutlab/Constants/color.dart';
+import 'package:flutlab/Constants/dimensions.dart';
 import 'package:flutter/material.dart';
 
 final containerPrimaryText =
-    TextStyle(color: whiteColor, fontSize: 20, fontWeight: FontWeight.bold);
+    TextStyle(color: whiteColor, fontSize: bigSize , fontWeight: FontWeight.bold);
 
-final containerSecondaryTextStyle = TextStyle(color: whiteColor, fontSize: 15);
+final containerSecondaryTextStyle = TextStyle(color: whiteColor, fontSize: mediumSize);
 
 final titleText =
-    TextStyle(color: blackColor, fontSize: 30, fontWeight: FontWeight.bold);
+    TextStyle(color: blackColor, fontSize: titleSize, fontWeight: FontWeight.bold);
 
 final normalText = TextStyle(
   color: greyColor,
-  fontSize: 10,
+  fontSize: smallSize,
 );
 
 final superScriptText = TextStyle(
-    fontSize: 12,
+    fontSize: smallSize,
     fontWeight: FontWeight.bold,
     fontFeatures: [FontFeature.superscripts()]);
-    //TODO! superscirpt 
+    
 
 final normalTextStyleLineTrough = TextStyle(
-    color: greyColor, fontSize: 15, decoration: TextDecoration.lineThrough);
-    //TODO! lineThough
+    color: greyColor, fontSize: mediumSize, decoration: TextDecoration.lineThrough);
 final readMore =
-    TextStyle(color: orangeColor, fontWeight: FontWeight.bold, fontSize: 14);
+    TextStyle(color: orangeColor, fontWeight: FontWeight.bold, fontSize: mediumSize);
 
 final reviewsText =
-    TextStyle(color: blackColor, fontSize: 20, fontWeight: FontWeight.bold);
+    TextStyle(color: blackColor, fontSize: bigSize, fontWeight: FontWeight.bold);
 
-//* HomePage
+
 
 final homePagetitleText =
-    TextStyle(color: blackColor, fontSize: 25, fontWeight: FontWeight.bold);
+    TextStyle(color: blackColor, fontSize: bigSize, fontWeight: FontWeight.bold);
 
 final homePageAddtotitleText =
-    TextStyle(color: blackColor, fontSize: 15, fontWeight: FontWeight.bold);
+    TextStyle(color: blackColor, fontSize: mediumSize, fontWeight: FontWeight.bold);
+
+
+final containerTitleText = TextStyle(color: blackColor, fontSize: mediumSize, fontWeight: FontWeight.bold);

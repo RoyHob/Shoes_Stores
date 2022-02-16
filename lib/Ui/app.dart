@@ -1,6 +1,6 @@
-import 'package:flutlab/Ui/Screens/home_page.dart';
+import 'package:flutlab/Ui/Screens/home_page/home_page.dart';
+import 'package:flutlab/Ui/Screens/product_details/product_details.dart';
 import 'package:flutter/material.dart';
-import 'Screens/product_details.dart';
 
 final homePage = "/home_page";
 final productDetails = "/product_details";
@@ -12,8 +12,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Shoes Store',
       theme: ThemeData(),
-      //  home: ProductDetails(),
-      //  home:HomePage(),
       initialRoute: homePage,
       onGenerateRoute: (settings) {
         if (settings.name == productDetails) {
